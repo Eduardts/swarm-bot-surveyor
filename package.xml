@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="2"> 
+  <name>swarm-bot-surveyor</name>
+  <version>0.1.0</version>
+  <description>Swarm-based site surveyor demo (Python/rospy)</description>
+  <maintainer email="you@example.com">Eduardts</maintainer>
+  <license>MIT</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+</package>

@@ -1,0 +1,4 @@
+# Python-side requirements (note: rospy is provided by ROS installation, not pip)
+numpy
+open3d
+laspy

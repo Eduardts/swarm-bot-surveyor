@@ -1,0 +1,27 @@
+<launch>
+  <!-- Launch Gazebo with terrain.world and start simple ROS nodes for swarm simulation -->
+  <arg name="world_file" default="$(find swarm-bot-surveyor)/gazebo_world/terrain.world" />
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_file)" />
+    <arg name="paused" value="false" />
+  </include>
+
+  <!-- Start a small number of drone nodes (3 by default) -->
+  <param name="~num_drones" value="3"/>
+
+  <node pkg="rospy" type="swarm_node.py" name="swarm_node_0" output="screen">
+    <param name="drone_id" value="0"/>
+  </node>
+  <node pkg="rospy" type="swarm_node.py" name="swarm_node_1" output="screen">
+    <param name="drone_id" value="1"/>
+  </node>
+  <node pkg="rospy" type="swarm_node.py" name="swarm_node_2" output="screen">
+    <param name="drone_id" value="2"/>
+  </node>
+
+  <!-- SLAM processor that consumes per-drone pointclouds and publishes combined cloud -->
+  <node pkg="rospy" type="slam_processor.py" name="slam_processor" output="screen"/>
+
+  <!-- Exporter can be run separately to save the final cloud to disk -->
+</launch>
